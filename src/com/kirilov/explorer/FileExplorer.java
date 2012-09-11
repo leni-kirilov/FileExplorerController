@@ -1,7 +1,7 @@
 package com.kirilov.explorer;
 
-//import filechooser.DirectoryModel;
 import com.kirilov.explorer.model.FileSystemTreePanel;
+import com.kirilov.explorer.model.MyFileFilter;
 import java.awt.event.*;
 import javax.swing.JFrame;
 import javax.swing.JScrollPane;
@@ -21,7 +21,7 @@ public class FileExplorer {
         String startPath = "c:\\";
 
 //        FileSystemModel model = new FileSystemModel(startPath);
-        FileSystemTreePanel fileTree = new FileSystemTreePanel(startPath);
+        FileSystemTreePanel fileTree = new FileSystemTreePanel(startPath, new MyFileFilter());
 
 //        DirectoryModel directoryModel = new DirectoryModel(new File(startPath) );//(File)model.getRoot() );
 //        JTable table = new JTable( directoryModel );

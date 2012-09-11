@@ -1,6 +1,5 @@
 package com.kirilov.explorer.model;
 
-
 import java.io.File;
 import java.io.FileFilter;
 
@@ -10,6 +9,7 @@ import java.io.FileFilter;
  */
 public class MyFileFilter implements FileFilter {
 
+    //TODO this variable is bad example of Singleton... Redo like proper singleton!
     public static FileFilter filter = new MyFileFilter();
 
     public boolean accept(File pathname) {

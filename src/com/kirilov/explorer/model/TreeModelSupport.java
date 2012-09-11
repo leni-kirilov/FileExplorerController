@@ -1,6 +1,9 @@
 package com.kirilov.explorer.model;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.EventListener;
+import java.util.Iterator;
+import java.util.List;
 import javax.swing.event.TreeModelEvent;
 import javax.swing.event.TreeModelListener;
 

@@ -2,6 +2,7 @@ package com.kirilov.explorer.model;
 
 import java.awt.BorderLayout;
 import java.io.File;
+import java.io.FileFilter;
 import javax.swing.JPanel;
 import javax.swing.JTree;
 import javax.swing.tree.TreeModel;
@@ -16,6 +17,10 @@ public class FileSystemTreePanel extends JPanel {
 
     public FileSystemTreePanel(String startPath) {
         this(new FileSystemModel(startPath));
+    }
+
+    public FileSystemTreePanel(String startPath, FileFilter filter) {
+        this(new FileSystemModel(startPath, filter));
     }
 
     public FileSystemTreePanel(FileSystemModel model) {
