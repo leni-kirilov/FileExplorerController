@@ -1,7 +1,7 @@
 package com.kirilov.explorer.model;
 
-
-import java.io.*;
+import java.io.File;
+import java.io.Serializable;
 import javax.swing.tree.TreePath;
 
 public class FileSystemModel extends AbstractTreeModel implements Serializable {
@@ -16,16 +16,19 @@ public class FileSystemModel extends AbstractTreeModel implements Serializable {
         rootFile = new File(startPath);
     }
 
+    @Override
     public Object getRoot() {
         return rootFile;
     }
 
+    @Override
     public Object getChild(Object parent, int index) {
         File directory = (File) parent;
         File[] children = directory.listFiles(MyFileFilter.filter);
         return children[index];
     }
 
+    @Override
     public int getChildCount(Object parent) {
         File fileSysEntity = (File) parent;
         if (fileSysEntity.isDirectory()) {
@@ -49,6 +52,7 @@ public class FileSystemModel extends AbstractTreeModel implements Serializable {
         return result;
     }
 
+    @Override
     public boolean isLeaf(Object node) {
         File nod = (File) node;
 //        if(nod.listFiles().length == 0 && nod.isDirectory()) return true;
@@ -56,9 +60,11 @@ public class FileSystemModel extends AbstractTreeModel implements Serializable {
         return nod.isFile();
     }
 
+    @Override
     public void valueForPathChanged(TreePath path, Object newValue) {
     }
 
+    @Override
     public int getIndexOfChild(Object parent, Object child) {
         File directory = (File) parent;
         File fileSysEntity = (File) child;

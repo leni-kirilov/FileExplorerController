@@ -1,6 +1,5 @@
 package com.kirilov.explorer.model;
 
-
 import javax.swing.tree.TreeModel;
 
 // This class takes care of the event listener lists required by TreeModel.
@@ -8,5 +7,3 @@ import javax.swing.tree.TreeModel;
 // Look in TreeModelSupport for all of the pertinent code.
 public abstract class AbstractTreeModel extends TreeModelSupport implements TreeModel {
 }
-
-

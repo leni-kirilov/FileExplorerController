@@ -1,7 +1,6 @@
 package com.kirilov.explorer.filechooser;
 
-
-import java.awt.*;
+import java.awt.Component;
 import javax.swing.Icon;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableCellRenderer;
@@ -24,4 +23,3 @@ public class DirectoryRenderer extends DefaultTableCellRenderer {
         return super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
     }
 }
-

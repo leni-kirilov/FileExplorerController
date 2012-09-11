@@ -1,11 +1,11 @@
 package com.kirilov.explorer.filechooser;
 
-
 import java.io.*;
 import javax.swing.UIManager;
 import javax.swing.table.AbstractTableModel;
 
 public class DirectoryModel extends AbstractTableModel {
+
     protected File directory;
     protected String[] children;
     protected int rowCount;
@@ -16,7 +16,7 @@ public class DirectoryModel extends AbstractTableModel {
         init();
     }
 
-    public DirectoryModel( File dir ) {
+    public DirectoryModel(File dir) {
         init();
         directory = dir;
         children = dir.list();
@@ -24,17 +24,16 @@ public class DirectoryModel extends AbstractTableModel {
     }
 
     protected void init() {
-        dirIcon = UIManager.get( "DirectoryPane.directoryIcon" );
-        fileIcon = UIManager.get( "DirectoryPane.fileIcon" );
+        dirIcon = UIManager.get("DirectoryPane.directoryIcon");
+        fileIcon = UIManager.get("DirectoryPane.fileIcon");
     }
 
-    public void setDirectory( File dir ) {
-        if ( dir != null ) {
+    public void setDirectory(File dir) {
+        if (dir != null) {
             directory = dir;
             children = dir.list();
             rowCount = children.length;
-        }
-        else {
+        } else {
             directory = null;
             children = null;
             rowCount = 0;
@@ -47,53 +46,50 @@ public class DirectoryModel extends AbstractTableModel {
     }
 
     public int getColumnCount() {
-        return children != null ? 3 :0;
+        return children != null ? 3 : 0;
     }
 
-    public Object getValueAt(int row, int column){
-        if ( directory == null || children == null ) {
+    public Object getValueAt(int row, int column) {
+        if (directory == null || children == null) {
             return null;
         }
 
-        File fileSysEntity = new File( directory, children[row] );
+        File fileSysEntity = new File(directory, children[row]);
 
-        switch ( column ) {
-        case 0:
-            return fileSysEntity.isDirectory() ? dirIcon : fileIcon;
-        case 1:
-            return fileSysEntity.getName();
-        case 2:
-            if ( fileSysEntity.isDirectory() ) {
-                return "--";
-            }
-            else {
-                return new Long( fileSysEntity.length() );
-            }
-        default:
-            return "";
+        switch (column) {
+            case 0:
+                return fileSysEntity.isDirectory() ? dirIcon : fileIcon;
+            case 1:
+                return fileSysEntity.getName();
+            case 2:
+                if (fileSysEntity.isDirectory()) {
+                    return "--";
+                } else {
+                    return new Long(fileSysEntity.length());
+                }
+            default:
+                return "";
         }
     }
 
-    public String getColumnName( int column ) {
-        switch ( column ) {
-        case 0:
-            return "Type";
-        case 1:
-            return "Name";
-        case 2:
-            return "Bytes";
-        default:
-            return "unknown";
+    public String getColumnName(int column) {
+        switch (column) {
+            case 0:
+                return "Type";
+            case 1:
+                return "Name";
+            case 2:
+                return "Bytes";
+            default:
+                return "unknown";
         }
     }
 
-    public Class getColumnClass( int column ) {
-        if ( column == 0 ) {
-            return getValueAt( 0, column).getClass();
-        }
-        else {
-            return super.getColumnClass( column );
+    public Class getColumnClass(int column) {
+        if (column == 0) {
+            return getValueAt(0, column).getClass();
+        } else {
+            return super.getColumnClass(column);
         }
     }
 }
-

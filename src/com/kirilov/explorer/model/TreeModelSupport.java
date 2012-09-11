@@ -5,49 +5,50 @@ import javax.swing.event.TreeModelEvent;
 import javax.swing.event.TreeModelListener;
 
 public class TreeModelSupport {
-   private Vector vector = new Vector();
 
-   public void addTreeModelListener( TreeModelListener listener ) {
-      if ( listener != null && !vector.contains( listener ) ) {
-         vector.addElement( listener );
-      }
-   }
+    private List<EventListener> list = new ArrayList<>();
 
-   public void removeTreeModelListener( TreeModelListener listener ) {
-      if ( listener != null ) {
-         vector.removeElement( listener );
-      }
-   }
+    public void addTreeModelListener(TreeModelListener listener) {
+        if (listener != null && !list.contains(listener)) {
+            list.add(listener);
+        }
+    }
 
-   public void fireTreeNodesChanged( TreeModelEvent e ) {
-      Enumeration listeners = vector.elements();
-      while ( listeners.hasMoreElements() ) {
-         TreeModelListener listener = (TreeModelListener)listeners.nextElement();
-         listener.treeNodesChanged( e );
-      }
-   }
+    public void removeTreeModelListener(TreeModelListener listener) {
+        if (listener != null) {
+            list.remove(listener);
+        }
+    }
 
-   public void fireTreeNodesInserted( TreeModelEvent e ) {
-      Enumeration listeners = vector.elements();
-      while ( listeners.hasMoreElements() ) {
-         TreeModelListener listener = (TreeModelListener)listeners.nextElement();
-         listener.treeNodesInserted( e );
-      }
-   }
+    public void fireTreeNodesChanged(TreeModelEvent e) {
+        Iterator listeners = list.iterator();
+        while (listeners.hasNext()) {
+            TreeModelListener listener = (TreeModelListener) listeners.next();
+            listener.treeNodesChanged(e);
+        }
+    }
 
-   public void fireTreeNodesRemoved( TreeModelEvent e ) {
-      Enumeration listeners = vector.elements();
-      while ( listeners.hasMoreElements() ) {
-         TreeModelListener listener = (TreeModelListener)listeners.nextElement();
-         listener.treeNodesRemoved( e );
-      }
-   }
+    public void fireTreeNodesInserted(TreeModelEvent e) {
+        Iterator listeners = list.iterator();
+        while (listeners.hasNext()) {
+            TreeModelListener listener = (TreeModelListener) listeners.next();
+            listener.treeNodesInserted(e);
+        }
+    }
 
-   public void fireTreeStructureChanged( TreeModelEvent e ) {
-      Enumeration listeners = vector.elements();
-      while ( listeners.hasMoreElements() ) {
-         TreeModelListener listener = (TreeModelListener)listeners.nextElement();
-         listener.treeStructureChanged( e );
-      }
-   }
+    public void fireTreeNodesRemoved(TreeModelEvent e) {
+        Iterator listeners = list.iterator();
+        while (listeners.hasNext()) {
+            TreeModelListener listener = (TreeModelListener) listeners.next();
+            listener.treeNodesRemoved(e);
+        }
+    }
+
+    public void fireTreeStructureChanged(TreeModelEvent e) {
+        Iterator listeners = list.iterator();
+        while (listeners.hasNext()) {
+            TreeModelListener listener = (TreeModelListener) listeners.next();
+            listener.treeStructureChanged(e);
+        }
+    }
 }

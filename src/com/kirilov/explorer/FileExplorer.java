@@ -3,15 +3,9 @@ package com.kirilov.explorer;
 //import filechooser.DirectoryModel;
 import com.kirilov.explorer.model.FileSystemTreePanel;
 import java.awt.event.*;
-//import java.awt.*;
-//import java.io.*;
 import javax.swing.JFrame;
 import javax.swing.JScrollPane;
 import javax.swing.JSplitPane;
-//import javax.swing.JTable;
-//import javax.swing.ListSelectionModel;
-//import javax.swing.event.TreeSelectionEvent;
-//import javax.swing.event.TreeSelectionListener;
 
 public class FileExplorer {
 
@@ -24,7 +18,7 @@ public class FileExplorer {
             }
         });
 
-        String startPath = "D:\\";
+        String startPath = "c:\\";
 
 //        FileSystemModel model = new FileSystemModel(startPath);
         FileSystemTreePanel fileTree = new FileSystemTreePanel(startPath);
@@ -55,8 +49,8 @@ public class FileExplorer {
 
         frame.setSize(1000, 500);
         frame.pack();
-//        frame.show();
         frame.setVisible(true);
+        frame.setLocationRelativeTo(null);
 
     }
 //    protected static class TreeListener implements TreeSelectionListener {

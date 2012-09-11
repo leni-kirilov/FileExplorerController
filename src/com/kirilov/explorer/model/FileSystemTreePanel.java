@@ -1,8 +1,7 @@
 package com.kirilov.explorer.model;
 
-
-import java.io.*;
-import java.awt.*;
+import java.awt.BorderLayout;
+import java.io.File;
 import javax.swing.JPanel;
 import javax.swing.JTree;
 import javax.swing.tree.TreeModel;
@@ -21,7 +20,6 @@ public class FileSystemTreePanel extends JPanel {
 
     public FileSystemTreePanel(FileSystemModel model) {
         tree = new JTree((TreeModel) model) {
-
             public String convertValueToText(Object value, boolean selected,
                     boolean expanded, boolean leaf, int row,
                     boolean hasFocus) {
