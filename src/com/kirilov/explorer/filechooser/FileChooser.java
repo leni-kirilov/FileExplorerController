@@ -6,10 +6,13 @@ import java.awt.event.*;
 import javax.swing.*;
 import javax.swing.SwingUtilities;
 
-/*
+/**
  * FileChooserDemo.java uses these files:
  *   images/Open16.gif
  *   images/Save16.gif
+ *
+ * @author Leni Kirilov
+ *
  */
 public class FileChooser extends JPanel
         implements ActionListener {
